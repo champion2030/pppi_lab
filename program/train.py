@@ -1,4 +1,5 @@
 # train.py
+//comment gor commits
 
 import os
 from multiprocessing import freeze_support
