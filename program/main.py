@@ -16,8 +16,6 @@ from sklearn.metrics.pairwise import cosine_similarity
 keyboard1 = telebot.types.ReplyKeyboardMarkup()
 keyboard1.row('Ok', 'Bye')
 
-bot = telebot.TeleBot('5881636928:AAGv5-EeoS2m2D6lj3xU9iEXj-vo01iwUsw')
-
 # input model variable
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
