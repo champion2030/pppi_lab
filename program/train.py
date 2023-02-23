@@ -136,3 +136,4 @@ print(f'training complete. file saved to {FILE}')
 if __name__ == "__main__":
     dataset = ChatDataset()
     #freeze_support()
+
