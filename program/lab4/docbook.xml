@@ -1,46 +1,36 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
 <book>
-  <bookinfo>
-    <title>Graphic</title>
-
-    <author>
-      <firstname>Yaroslav</firstname>
-
-      <surname>Reshetnyak</surname>
-
-      <affiliation>
-        <orgname>yar-resh@yandex.com</orgname>
-      </affiliation>
-    </author>
-
-    <pubdate>10-03-2023</pubdate>
-  </bookinfo>
-
-  <chapter>
-    <title>Документация к игре Пасьянс</title>
-
-    <section>
-      <title>Общее описание</title>
-
-      <para><emphasis>Пасьянс с возможнотью игры по сети</emphasis></para>
-    </section>
-  </chapter>
-
-  <chapter>
-    <title>Работа с картами</title>
-
-    <section>
-      <title>Создание карт</title>
-
-      <mediaobject>
-            <textobject>
-          <phrase>Вариант использования №1 – создание карт при начале игры</phrase>
-        </textobject>
-      </mediaobject>
-
-       <programlisting>
+	<bookinfo>
+		<title>Пасьянс</title>
+		<author>
+			<firstname>Yaroslav</firstname>
+			<surname>Reshetnyak</surname>
+			<affiliation>
+				<orgname>yar-resh@yandex.com</orgname>
+			</affiliation>
+		</author>
+		<pubdate>10-03-2023</pubdate>
+	</bookinfo>
+	<chapter>
+		<title>Документация к игре Пасьянс</title>
+		<section>
+			<title>Общее описание</title>
+			<para>
+				<emphasis>Пасьянс с возможнотью игры по сети</emphasis>
+			</para>
+		</section>
+	</chapter>
+	<chapter>
+		<title>Работа с картами</title>
+		<section>
+			<title>Создание карт</title>
+			<mediaobject>
+				<textobject>
+					<phrase>Вариант использования №1 – создание карт при начале игры</phrase>
+				</textobject>
+			</mediaobject>
+			<programlisting>
 public final class Card
 {
 	// Indexed by suit, then rank
@@ -77,7 +67,7 @@ public final class Card
 	 */
 	public static Card get(Rank pRank, Suit pSuit)
 	{
-		assert pRank != null && pSuit != null;
+		assert pRank != null &amp;&amp; pSuit != null;
 		return CARDS[pSuit.ordinal()][pRank.ordinal()];
 	}
 	
@@ -137,16 +127,13 @@ public final class Card
 	}
 }
 </programlisting>
-
-      <para>Изображение карт</para>
-
-      <mediaobject>
-             <textobject>
-          <phrase>Вариант использования №2 – отображение изображений карт</phrase>
-        </textobject>
-      </mediaobject>
-
-      <programlisting>
+			<para>Изображение карт</para>
+			<mediaobject>
+				<textobject>
+					<phrase>Вариант использования №2 – отображение изображений карт</phrase>
+				</textobject>
+			</mediaobject>
+			<programlisting>
  package ca.mcgill.cs.stg.solitaire.cards;
 
 
@@ -165,7 +152,7 @@ public final class CardImages
 	private static final String[] RANK_CODES = {"a", "2", "3", "4", "5", "6", "7", "8", "9", "t", "j", "q", "k"};
 	private static final String[] SUIT_CODES = {"c", "d", "h", "s"};	
 	
-	private static Map<String, Image> aCards = new HashMap<String, Image>();
+	private static Map&lt;String, Image&gt; aCards = new HashMap&lt;String, Image&gt;();
 	
 	private CardImages()
 	{}
@@ -207,18 +194,15 @@ public final class CardImages
 	}
 }
 	</programlisting>
-    </section>
-
-    <section>
-      <title>Создание стека карт</title>
-
-        <mediaobject>
-         <textobject>
-          <phrase>Вариант использования №3 – сложить карты в стопку</phrase>
-        </textobject>
-      </mediaobject>
-
-      <programlisting>
+		</section>
+		<section>
+			<title>Создание стека карт</title>
+			<mediaobject>
+				<textobject>
+					<phrase>Вариант использования №3 – сложить карты в стопку</phrase>
+				</textobject>
+			</mediaobject>
+			<programlisting>
 package ca.mcgill.cs.stg.solitaire.cards;
 
 import java.util.ArrayList;
@@ -229,16 +213,18 @@ import java.util.List;
  * Represents a general-purpose stack of cards. New CardStack
  * instances are initially empty.
  */
-public class CardStack implements Iterable<Card>
+public class CardStack implements Iterable
+				&lt;Card&gt;
 {
-	private final List<Card> aCards;
+	private final List
+					&lt;Card&gt; aCards;
 	
 	/**
 	 * Creates an empty CardStack.
 	 */
 	public CardStack()
 	{
-		aCards = new ArrayList<>();
+		aCards = new ArrayList&lt;&gt;();
 	}
 	
 	/**
@@ -247,7 +233,8 @@ public class CardStack implements Iterable<Card>
 	 * 
 	 * @param pCards The cards to initialize the stack with.
 	 */
-	public CardStack(Iterable<Card> pCards)
+	public CardStack(Iterable
+						&lt;Card&gt; pCards)
 	{
 		this();
 		for( Card card : pCards )
@@ -265,7 +252,7 @@ public class CardStack implements Iterable<Card>
 	 */
 	public void push(Card pCard)
 	{
-		assert pCard != null && !aCards.contains(pCard);
+		assert pCard != null &amp;&amp; !aCards.contains(pCard);
 		aCards.add(pCard);
 	}
 	
@@ -294,11 +281,11 @@ public class CardStack implements Iterable<Card>
 	/**
 	 * @param pIndex The index to peek in the stack.
 	 * @return The card at the position indicated by pIndex
-	 * @pre pIndex >= 0 && pIndex < size();
+	 * @pre pIndex &gt;= 0 &amp;&amp; pIndex &lt; size();
 	 */
 	public Card peek(int pIndex)
 	{
-		assert pIndex >= 0 && pIndex < size();
+		assert pIndex &gt;= 0 &amp;&amp; pIndex &lt; size();
 		return aCards.get(pIndex);
 	}
 	
@@ -327,13 +314,13 @@ public class CardStack implements Iterable<Card>
 	}
 
 	@Override
-	public Iterator<Card> iterator()
+	public Iterator&lt;Card&gt; iterator()
 	{
 		return aCards.iterator();
 	}
 }
-</programlisting>
 
-    </section>
-  </chapter>
+						</programlisting>
+					</section>
+	</chapter>
 </book>
